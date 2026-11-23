@@ -9,5 +9,9 @@ const line =
 const chars = [...line].length;
 if (chars < 1 || chars > 240) throw new Error(`line is ${chars} chars, outside 1-240`);
 
-mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", line + "\n", "utf8");
+function writeEntry(text: string): void {
+  mkdirSync("/output", { recursive: true });
+  writeFileSync("/output/entry.txt", text + "\n", "utf8");
+}
+
+writeEntry(line);
